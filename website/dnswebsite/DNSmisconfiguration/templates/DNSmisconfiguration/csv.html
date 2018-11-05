@@ -1,0 +1,32 @@
+{% extends "DNSmisconfiguration/base.html" %}
+
+{% load static %}
+
+{% block navbarCSV %}
+<a href="{% url 'DNSmisconfiguration:csv_url' %}" class="w3-bar-item w3-button w3-padding-large w3-white">CSV</a>
+{% endblock %}
+
+{% block navbarDemoCSV %}
+<a href="{% url 'DNSmisconfiguration:csv_url' %}" class="w3-bar-item w3-button w3-padding-large w3-gray">CSV</a>
+{% endblock %}
+
+
+{% block content %}
+
+<div class="w3-row-padding w3-light-grey w3-padding-64 w3-container">
+    <div class="w3-content">
+        <h1 id="abstract">A CSV File of URLs as Input</h1>
+        <h3>See <a href="{% url 'DNSmisconfiguration:readme' %}">README</a></h3>
+    </div>
+</div>
+
+
+<div class="w3-center w3-content w3-container w3-padding-64">
+<form action="{% url 'DNSmisconfiguration:csv_url' %}" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form }}
+    <input class="w3-button w3-black w3-padding-large w3-large w3-margin-top" type="submit" value="Submit">
+</form>
+</div>
+
+{% endblock %}
